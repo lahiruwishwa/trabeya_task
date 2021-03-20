@@ -24,7 +24,7 @@ com.lahiru.corebank.gen.* classes will report compile-time errors in your IDE un
 
       mvn clean install
 
-* default port : 8686
+* assigned port : 8686
          
       (application.properties -------> server.port=8686)
 
@@ -43,13 +43,13 @@ com.lahiru.integrator.wsdl.* classes will report compile-time errors in your IDE
 
        mvn clean install
 
-* default port : 8787
+* assigned port : 8787
 
-      (application.properties -------> server.port=8686)
+      (application.properties -------> server.port=8787)
 
 
 
-**mysql configurations
+** mysql configurations
 
        application.properties
        
