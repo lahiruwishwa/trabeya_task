@@ -61,3 +61,7 @@ create trabeya_integration schema manually on your own mysql database and change
 
             or you can use in memmory h2 database by commenting mysql properties in application.properties file, mysql dependencies in pom.xml file
             and uncommenting h2 properties in application.properties file, h2 dependencies in pom.xml file
+
+* Swagger API documentation available at
+
+        http://localhost:8787/swagger-ui.html
