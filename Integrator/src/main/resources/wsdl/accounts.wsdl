@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.lahiru.com/corebank/gen" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.lahiru.com/corebank/gen" targetNamespace="http://www.lahiru.com/corebank/gen">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.lahiru.com/corebank/gen">
+
+
+    <xs:element name="getAccountBalanceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userId" type="xs:string"/>
+                <xs:element name="account" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAccountBalanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="balance" type="xs:decimal"/>
+                <xs:element default="SUCCESS" name="status" type="tns:status"/>
+                <xs:element name="statusCode" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTotalBalanceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userId" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTotalBalanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="balance" type="xs:decimal"/>
+                <xs:element default="SUCCESS" name="status" type="tns:status"/>
+                <xs:element name="statusCode" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOwnTransferRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userId" type="xs:string"/>
+                <xs:element name="senderAccount" type="xs:string"/>
+                <xs:element name="receiverAccount" type="xs:string"/>
+                <xs:element name="amount" type="xs:decimal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOtherTransferRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userId" type="xs:string"/>
+                <xs:element name="senderAccount" type="xs:string"/>
+                <xs:element name="receiverAccount" type="xs:string"/>
+                <xs:element name="amount" type="xs:decimal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOwnTransferResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element default="SUCCESS" name="status" type="tns:status"/>
+                <xs:element name="statusCode" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOtherTransferResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element default="SUCCESS" name="status" type="tns:status"/>
+                <xs:element name="statusCode" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="status">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SUCCESS"/>
+            <xs:enumeration value="FAILED"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getOtherTransferRequest">
+    <wsdl:part element="tns:getOtherTransferRequest" name="getOtherTransferRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOwnTransferResponse">
+    <wsdl:part element="tns:getOwnTransferResponse" name="getOwnTransferResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalBalanceResponse">
+    <wsdl:part element="tns:getTotalBalanceResponse" name="getTotalBalanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOwnTransferRequest">
+    <wsdl:part element="tns:getOwnTransferRequest" name="getOwnTransferRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountBalanceResponse">
+    <wsdl:part element="tns:getAccountBalanceResponse" name="getAccountBalanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOtherTransferResponse">
+    <wsdl:part element="tns:getOtherTransferResponse" name="getOtherTransferResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountBalanceRequest">
+    <wsdl:part element="tns:getAccountBalanceRequest" name="getAccountBalanceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalBalanceRequest">
+    <wsdl:part element="tns:getTotalBalanceRequest" name="getTotalBalanceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AccountsPort">
+    <wsdl:operation name="getOtherTransfer">
+      <wsdl:input message="tns:getOtherTransferRequest" name="getOtherTransferRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getOtherTransferResponse" name="getOtherTransferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOwnTransfer">
+      <wsdl:input message="tns:getOwnTransferRequest" name="getOwnTransferRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getOwnTransferResponse" name="getOwnTransferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalBalance">
+      <wsdl:input message="tns:getTotalBalanceRequest" name="getTotalBalanceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getTotalBalanceResponse" name="getTotalBalanceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountBalance">
+      <wsdl:input message="tns:getAccountBalanceRequest" name="getAccountBalanceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountBalanceResponse" name="getAccountBalanceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccountsPortSoap11" type="tns:AccountsPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getOtherTransfer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getOtherTransferRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOtherTransferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOwnTransfer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getOwnTransferRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOwnTransferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalBalance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getTotalBalanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTotalBalanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountBalance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAccountBalanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAccountBalanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccountsPortService">
+    <wsdl:port binding="tns:AccountsPortSoap11" name="AccountsPortSoap11">
+      <soap:address location="http://localhost:8686/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
