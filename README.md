@@ -49,4 +49,15 @@ com.lahiru.integrator.wsdl.* classes will report compile-time errors in your IDE
 
 
 
-mysql configurations
+**mysql configurations
+
+       application.properties
+       
+            spring.datasource.url = jdbc:mysql://localhost:43370/trabeya_integration
+            spring.datasource.username = root
+            spring.datasource.password = root@@
+
+create trabeya_integration schema manually on your own mysql database and change above configurations to match your local mysql db.
+
+            or you can use in memmory h2 database by commenting mysql properties in application.properties file, mysql dependencies in pom.xml file
+            and uncommenting h2 properties in application.properties file, h2 dependencies in pom.xml file
