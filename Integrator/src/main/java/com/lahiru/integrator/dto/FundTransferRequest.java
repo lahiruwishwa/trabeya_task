@@ -30,6 +30,15 @@ public class FundTransferRequest {
     @ApiModelProperty(value ="Transferring amount" ,required = true)
     private BigDecimal amount;
 
+    public FundTransferRequest(String senderAccountNo,String receiverAccountNo,BigDecimal amount) {
+        this.senderAccountNo = senderAccountNo;
+        this.receiverAccountNo = receiverAccountNo;
+        this.amount = amount;
+    }
+
+    public FundTransferRequest() {
+    }
+
     public String getSenderAccountNo() {
         return senderAccountNo;
     }

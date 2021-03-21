@@ -5,11 +5,13 @@ import com.lahiru.integrator.dto.FundTransferRequest;
 import com.lahiru.integrator.dto.FundTransferResponse;
 import com.lahiru.integrator.exception.DataAccessException;
 import com.lahiru.integrator.service.AccountService;
+import com.lahiru.integrator.web.util.ValidateUtil;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,8 @@ public class AccountRestService {
 
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private ValidateUtil validateUtil;
 
     @Value("${core.bank.account.no.mask.length:4}")
     private int maskLength;
@@ -49,11 +53,15 @@ public class AccountRestService {
                                                              @PathVariable(value = "accountId") String accountId)
             throws DataAccessException { //DataAccessException will handle by the ExceptionHandler
 
+        validateUtil.validateStringField(userId,"integrator.error.0001",
+                "integrator.error.code.0001");
+        validateUtil.validateStringField(accountId,"integrator.error.0002",
+                "integrator.error.code.0002");
+
         BigDecimal balance = accountService.getBalance(userId, accountId);
         BalanceResponse response = new BalanceResponse(df.format(balance));
 
         return new ResponseEntity<>(response, HttpStatus.OK);
-
     }
 
     @GetMapping(value = "/{userId}/balance")
@@ -63,6 +71,9 @@ public class AccountRestService {
     public ResponseEntity<BalanceResponse> getTotalBalance(@ApiParam(value = "Id of the user", required = true)
                                                            @PathVariable(value = "userId") String userId)
             throws DataAccessException {
+
+        validateUtil.validateStringField(userId,"integrator.error.0001",
+                "integrator.error.code.0001");
 
         BigDecimal balance = accountService.getBalance(userId);
         BalanceResponse response = new BalanceResponse(df.format(balance));
@@ -79,6 +90,9 @@ public class AccountRestService {
                                                                 @Valid
                                                                 @RequestBody FundTransferRequest fundTransferRequest)
             throws DataAccessException {
+
+        validateUtil.validateStringField(userId,"integrator.error.0001",
+                "integrator.error.code.0001");
 
         accountService.ownTransfer(userId, fundTransferRequest.getSenderAccountNo(),
                 fundTransferRequest.getReceiverAccountNo(), fundTransferRequest.getAmount());
@@ -100,6 +114,9 @@ public class AccountRestService {
                                                                   @Valid
                                                                   @RequestBody FundTransferRequest fundTransferRequest)
             throws DataAccessException {
+
+        validateUtil.validateStringField(userId,"integrator.error.0001",
+                "integrator.error.code.0001");
 
         accountService.otherTransfer(userId, fundTransferRequest.getSenderAccountNo(),
                 fundTransferRequest.getReceiverAccountNo(), fundTransferRequest.getAmount());

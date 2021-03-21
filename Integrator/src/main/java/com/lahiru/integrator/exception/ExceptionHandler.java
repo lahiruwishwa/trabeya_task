@@ -18,13 +18,6 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-//    @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
-//    public ResponseEntity<Error> handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
-//        Error error=new Error("error","error in arguments");
-//        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-//    }
-
-
     @Override
     public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,

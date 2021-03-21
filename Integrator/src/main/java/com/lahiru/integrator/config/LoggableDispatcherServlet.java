@@ -44,16 +44,19 @@ public class LoggableDispatcherServlet extends DispatcherServlet {
 
     private void log(HttpServletRequest requestToCache, HttpServletResponse responseToCache,
                      HandlerExecutionChain handler) {
-        RequestLog log = new RequestLog();
-        log.setHttpStatus(responseToCache.getStatus());
-        log.setHttpMethod(requestToCache.getMethod());
-        log.setPath(requestToCache.getRequestURI());
-        log.setClientIp(requestToCache.getRemoteAddr());
-        log.setResponse(getResponsePayload(responseToCache));
-        log.setRequestBody(getRequestPayload(requestToCache));
-        log.setTime(new Date());
-        //logger.info(log.toString());
-        requestLogService.logRequest(log);
+
+        if(requestToCache.getRequestURI().contains("/account/")) {
+            RequestLog log = new RequestLog();
+            log.setHttpStatus(responseToCache.getStatus());
+            log.setHttpMethod(requestToCache.getMethod());
+            log.setPath(requestToCache.getRequestURI());
+            log.setClientIp(requestToCache.getRemoteAddr());
+            log.setResponse(getResponsePayload(responseToCache));
+            log.setRequestBody(getRequestPayload(requestToCache));
+            log.setTime(new Date());
+            //logger.info(log.toString());
+            requestLogService.logRequest(log);
+        }
     }
 
     private String getResponsePayload(HttpServletResponse response) {
