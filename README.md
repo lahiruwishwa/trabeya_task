@@ -65,3 +65,7 @@ create trabeya_integration schema manually on your own mysql database and change
 * Swagger API documentation available at
 
         http://localhost:8787/swagger-ui.html
+        
+* Unit tests available at
+
+        trabeya_task/Integrator/src/test/java/com/lahiru/integrator/web/restful/AccountRestServiceTest.java
