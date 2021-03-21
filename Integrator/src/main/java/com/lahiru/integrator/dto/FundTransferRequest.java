@@ -1,11 +1,9 @@
 package com.lahiru.integrator.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;

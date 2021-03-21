@@ -4,7 +4,6 @@ import com.lahiru.integrator.exception.DataAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import java.util.Locale;
 

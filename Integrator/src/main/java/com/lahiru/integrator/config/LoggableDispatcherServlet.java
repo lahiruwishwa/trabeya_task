@@ -54,7 +54,7 @@ public class LoggableDispatcherServlet extends DispatcherServlet {
             log.setResponse(getResponsePayload(responseToCache));
             log.setRequestBody(getRequestPayload(requestToCache));
             log.setTime(new Date());
-            //logger.info(log.toString());
+
             requestLogService.logRequest(log);
         }
     }
