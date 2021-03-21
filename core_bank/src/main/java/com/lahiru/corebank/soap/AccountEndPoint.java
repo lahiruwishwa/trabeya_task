@@ -6,16 +6,10 @@ import com.lahiru.corebank.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.MessageSource;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-
-import java.math.BigDecimal;
-import java.util.Locale;
-
 
 @Endpoint
 public class AccountEndPoint {
@@ -25,9 +19,6 @@ public class AccountEndPoint {
 
     @Autowired
     private AccountService accountService;
-
-    @Autowired
-    private MessageSource messageSource;
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAccountBalanceRequest")
     @ResponsePayload

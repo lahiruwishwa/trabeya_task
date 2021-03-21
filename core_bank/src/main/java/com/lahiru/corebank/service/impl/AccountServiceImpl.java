@@ -3,8 +3,6 @@ package com.lahiru.corebank.service.impl;
 import com.lahiru.corebank.domain.Account;
 import com.lahiru.corebank.exception.DataAccessException;
 import com.lahiru.corebank.service.AccountService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,6 @@ import java.util.stream.Collectors;
 public class AccountServiceImpl implements AccountService {
 
     public static List<Account> accountList = new ArrayList<>();
-    private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 
     @Autowired
     private MessageSource messageSource;
